@@ -221,6 +221,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/ajax - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ben Leie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="next big thing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/20/ajax - 副本/" itemprop="url">ajax</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T18:59:07+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于ajax，json的后端数据处理。</p>
+<ul>
+<li>ajax与HTTP请求的区别</li>
+</ul>
+<h3 id="JSON-server-superagent-axios的作用区别？"><a href="#JSON-server-superagent-axios的作用区别？" class="headerlink" title="JSON-server,superagent,axios的作用区别？"></a>JSON-server,superagent,axios的作用区别？</h3><ul>
+<li>axios:Promise based HTTP client for the browser and node.js<br>理由:jquery自3.0版本才支持Promise,如果你只是想使用jquery的ajax的话引入整个jquery是很大的负担，所以axios是一个很好的工具。(axios代码量只有jquery的十分之一，减少执行时间)。同时提供了其他features。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/project/github-graph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1392,165 +1518,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/generate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ben Leie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="next big thing">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/20/generate/" itemprop="url">generate</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T18:29:13+08:00">
-                2018-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>node debug ./node_modules/hexo/bin/hexo g</p>
-<ul>
-<li>hexo g –debug死循环 </li>
-</ul>
-<h2 id="loadPlugin"><a href="#loadPlugin" class="headerlink" title="loadPlugin"></a>loadPlugin</h2><ul>
-<li>是谁在调用loadPlugin?  load_plugins.js!<br>loadModuleList将package.json中的dev提取出来，在loadModules中调用ctx.loadPlugin(path)进行map.<br>至于loadPlugin,既是module又是vm的，很吓人。</li>
-<li>runInThisContext<br>var fn = vm.runInThisContext(script, path);<br>是在\hexo-deployer-git\index.js的path下执行它自己：hexo.extend.deployer.register(‘git’, require(‘./lib/deployer’));register结束后可以在self.extend.deployer.store访问到这么一个东西：<br><code>{ git: [Function: val] }</code>.</li>
-</ul>
-<h2 id="hexo-generate过程"><a href="#hexo-generate过程" class="headerlink" title="hexo generate过程"></a>hexo generate过程</h2><ul>
-<li>hexo-fs是自己定义的file库</li>
-<li>hexo-util   CacheStream()</li>
-</ul>
-<p>hexo/extend<br>hexo/plugins<br>hexo-renderer-ejs   ejs</p>
-<h2 id="构造函数们"><a href="#构造函数们" class="headerlink" title="构造函数们"></a>构造函数们</h2><h4 id="Console"><a href="#Console" class="headerlink" title="Console()"></a>Console()</h4><ul>
-<li>hexo-cli/lib/extend/console</li>
-<li>this —store,alias</li>
-<li>prototype — get,list,register</li>
-<li>hexo.extend.console</li>
-</ul>
-<h4 id="Box"><a href="#Box" class="headerlink" title="Box()"></a>Box()</h4><ul>
-<li>EventEmitter.call(this);</li>
-<li>require(‘util’).inherits(Box, EventEmitter);</li>
-</ul>
-<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo()"></a>Hexo()</h4><ul>
-<li>hexo.log.debug/info<h6 id="this"><a href="#this" class="headerlink" title="this"></a>this</h6></li>
-<li>this.source = new Source(this)    继承BOX</li>
-<li>this.theme  | this.locals</li>
-<li>EventEmitter.call(this);</li>
-</ul>
-<h6 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h6><ul>
-<li>require(‘../plugins/console’)(this);这样加载六大插件</li>
-<li>调用load_config,load_plugins，update_package，然后execFilter(‘after_init’,…)  this.extend.filter</li>
-<li>emit(“ready”)<h6 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h6>一切plugins和extend都加载好后</li>
-<li>loadDatabase    hexo.database  .options .load()</li>
-<li>self.source.process(), self.theme.process()</li>
-</ul>
-<h6 id="Hexo-prototype-generate"><a href="#Hexo-prototype-generate" class="headerlink" title="Hexo.prototype._generate()"></a><code>Hexo.prototype._generate()</code></h6><ul>
-<li>emit – generateBefore | generateAfter</li>
-<li>return self.execFilter(‘after_generate’, null, {context: self});</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1600,7 +1567,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>

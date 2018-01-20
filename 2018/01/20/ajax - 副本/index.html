@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UI," />
+  <meta name="keywords" content="javascript,http," />
 
 
 
@@ -69,17 +69,17 @@
 
 
 
-<meta name="description" content="modal如何显示在屏幕正中心？  简书 tooltip，只有一个左下角方向的显示??$(&amp;#39;[data-toggle=&amp;quot;tooltip&amp;quot;]&amp;#39;).tooltip(&amp;#39;show&amp;#39;),发现压根就没有激活. 如果没有data-placement，默认top;如果data-placement为””,默认right? tooltip的字体大小，背景颜色。。">
-<meta name="keywords" content="UI">
+<meta name="description" content="关于ajax，json的后端数据处理。  ajax与HTTP请求的区别  JSON-server,superagent,axios的作用区别？ axios:Promise based HTTP client for the browser and node.js理由:jquery自3.0版本才支持Promise,如果你只是想使用jquery的ajax的话引入整个jquery是很大的负担，所以axi">
+<meta name="keywords" content="javascript,http">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bootstrap">
-<meta property="og:url" content="//awecg.github.io/next/2018/01/20/bootstrap/index.html">
+<meta property="og:title" content="ajax">
+<meta property="og:url" content="//awecg.github.io/next/2018/01/20/ajax - 副本/index.html">
 <meta property="og:site_name" content="next big thing">
-<meta property="og:description" content="modal如何显示在屏幕正中心？  简书 tooltip，只有一个左下角方向的显示??$(&amp;#39;[data-toggle=&amp;quot;tooltip&amp;quot;]&amp;#39;).tooltip(&amp;#39;show&amp;#39;),发现压根就没有激活. 如果没有data-placement，默认top;如果data-placement为””,默认right? tooltip的字体大小，背景颜色。。">
-<meta property="og:updated_time" content="2018-01-03T09:56:59.686Z">
+<meta property="og:description" content="关于ajax，json的后端数据处理。  ajax与HTTP请求的区别  JSON-server,superagent,axios的作用区别？ axios:Promise based HTTP client for the browser and node.js理由:jquery自3.0版本才支持Promise,如果你只是想使用jquery的ajax的话引入整个jquery是很大的负担，所以axi">
+<meta property="og:updated_time" content="2018-01-14T11:27:32.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bootstrap">
-<meta name="twitter:description" content="modal如何显示在屏幕正中心？  简书 tooltip，只有一个左下角方向的显示??$(&amp;#39;[data-toggle=&amp;quot;tooltip&amp;quot;]&amp;#39;).tooltip(&amp;#39;show&amp;#39;),发现压根就没有激活. 如果没有data-placement，默认top;如果data-placement为””,默认right? tooltip的字体大小，背景颜色。。">
+<meta name="twitter:title" content="ajax">
+<meta name="twitter:description" content="关于ajax，json的后端数据处理。  ajax与HTTP请求的区别  JSON-server,superagent,axios的作用区别？ axios:Promise based HTTP client for the browser and node.js理由:jquery自3.0版本才支持Promise,如果你只是想使用jquery的ajax的话引入整个jquery是很大的负担，所以axi">
 
 
 
@@ -109,13 +109,13 @@
 
 
 
-  <link rel="canonical" href="//awecg.github.io/next/2018/01/20/bootstrap/"/>
+  <link rel="canonical" href="//awecg.github.io/next/2018/01/20/ajax - 副本/"/>
 
 
 
 
 
-  <title>bootstrap | next big thing</title>
+  <title>ajax | next big thing</title>
   
 
 
@@ -222,7 +222,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/bootstrap/">
+    <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/ajax - 副本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ben Leie">
@@ -239,7 +239,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bootstrap</h1>
+          <h1 class="post-title" itemprop="name headline">ajax</h1>
         
 
         <div class="post-meta">
@@ -251,7 +251,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T18:29:13+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T18:59:07+08:00">
                 2018-01-20
               </time>
             
@@ -289,24 +289,13 @@
       
 
       
-        <ul>
-<li>modal如何显示在屏幕正中心？</li>
+        <p>关于ajax，json的后端数据处理。</p>
+<ul>
+<li>ajax与HTTP请求的区别</li>
 </ul>
-<h2 id="简书"><a href="#简书" class="headerlink" title="简书"></a>简书</h2><ul>
-<li>tooltip，只有一个左下角方向的显示??<code>$(&#39;[data-toggle=&quot;tooltip&quot;]&#39;).tooltip(&#39;show&#39;)</code>,发现压根就没有激活.</li>
-<li>如果没有data-placement，默认top;如果data-placement为””,默认right?</li>
-<li>tooltip的字体大小，背景颜色。。</li>
-<li><strong>@link-hover-color</strong>   style标签的a:hover不能改变navbar-nav里a的背景颜色，只能用JS改变inline-style了。</li>
-<li>rgba(0,0,0,.65) opacity;</li>
-<li>calc(100% - 85px)</li>
-<li>无法用%设置textarea的height,无论是style标签还是js。</li>
-<li>textarea下面莫名其妙留出一段空白。display：block；</li>
+<h3 id="JSON-server-superagent-axios的作用区别？"><a href="#JSON-server-superagent-axios的作用区别？" class="headerlink" title="JSON-server,superagent,axios的作用区别？"></a>JSON-server,superagent,axios的作用区别？</h3><ul>
+<li>axios:Promise based HTTP client for the browser and node.js<br>理由:jquery自3.0版本才支持Promise,如果你只是想使用jquery的ajax的话引入整个jquery是很大的负担，所以axios是一个很好的工具。(axios代码量只有jquery的十分之一，减少执行时间)。同时提供了其他features。</li>
 </ul>
-<h2 id="试着用carousel做轮播图。"><a href="#试着用carousel做轮播图。" class="headerlink" title="试着用carousel做轮播图。"></a>试着用carousel做轮播图。</h2><ul>
-<li>carousel-indicators完全没用是吧？</li>
-<li>用<code>img {height:400px}</code>无法修改图片大小，可能bootstrap做了优先级更高的imporant的设置吧。如何解决图片大小适应问题？</li>
-</ul>
-<p>鼠标悬停会影响轮播；</p>
 
       
     </div>
@@ -324,7 +313,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UI/" rel="tag"># UI</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/http/" rel="tag"># http</a>
           
         </div>
       
@@ -337,7 +328,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/20/blueBirld/" rel="next" title="">
+              <a href="/2018/01/20/project/github-graph/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -346,10 +337,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/20/BoxModel/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,7 +460,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简书"><span class="nav-number">1.</span> <span class="nav-text">简书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#试着用carousel做轮播图。"><span class="nav-number">2.</span> <span class="nav-text">试着用carousel做轮播图。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-server-superagent-axios的作用区别？"><span class="nav-number">1.</span> <span class="nav-text">JSON-server,superagent,axios的作用区别？</span></a></li></ol></div>
             
 
           </div>
