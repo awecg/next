@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="node debug ./node_modules/hexo/bin/hexo g  hexo g –debug死循环   loadPlugin 是谁在调用loadPlugin?  load_plugins.js!loadModuleList将package.json中的dev提取出来，在loadModules中调用ctx.loadPlugin(path)进行map.至于loadPlugin,既是">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="generate">
+<meta property="og:url" content="//awecg.github.io/next/2018/01/20/generate/index.html">
+<meta property="og:site_name" content="next big thing">
+<meta property="og:description" content="node debug ./node_modules/hexo/bin/hexo g  hexo g –debug死循环   loadPlugin 是谁在调用loadPlugin?  load_plugins.js!loadModuleList将package.json中的dev提取出来，在loadModules中调用ctx.loadPlugin(path)进行map.至于loadPlugin,既是">
+<meta property="og:updated_time" content="2018-01-20T01:38:03.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="generate">
+<meta name="twitter:description" content="node debug ./node_modules/hexo/bin/hexo g  hexo g –debug死循环   loadPlugin 是谁在调用loadPlugin?  load_plugins.js!loadModuleList将package.json中的dev提取出来，在loadModules中调用ctx.loadPlugin(path)进行map.至于loadPlugin,既是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="//awecg.github.io/next/2018/01/20/generate/"/>
+
+
+
+
+
+  <title>generate | next big thing</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">next big thing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//awecg.github.io/next/2018/01/20/generate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ben Leie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="next big thing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">generate</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T18:29:13+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>node debug ./node_modules/hexo/bin/hexo g</p>
+<ul>
+<li>hexo g –debug死循环 </li>
+</ul>
+<h2 id="loadPlugin"><a href="#loadPlugin" class="headerlink" title="loadPlugin"></a>loadPlugin</h2><ul>
+<li>是谁在调用loadPlugin?  load_plugins.js!<br>loadModuleList将package.json中的dev提取出来，在loadModules中调用ctx.loadPlugin(path)进行map.<br>至于loadPlugin,既是module又是vm的，很吓人。</li>
+<li>runInThisContext<br>var fn = vm.runInThisContext(script, path);<br>是在\hexo-deployer-git\index.js的path下执行它自己：hexo.extend.deployer.register(‘git’, require(‘./lib/deployer’));register结束后可以在self.extend.deployer.store访问到这么一个东西：<br><code>{ git: [Function: val] }</code>.</li>
+</ul>
+<h2 id="hexo-generate过程"><a href="#hexo-generate过程" class="headerlink" title="hexo generate过程"></a>hexo generate过程</h2><ul>
+<li>hexo-fs是自己定义的file库</li>
+<li>hexo-util   CacheStream()</li>
+</ul>
+<p>hexo/extend<br>hexo/plugins<br>hexo-renderer-ejs   ejs</p>
+<h2 id="构造函数们"><a href="#构造函数们" class="headerlink" title="构造函数们"></a>构造函数们</h2><h4 id="Console"><a href="#Console" class="headerlink" title="Console()"></a>Console()</h4><ul>
+<li>hexo-cli/lib/extend/console</li>
+<li>this —store,alias</li>
+<li>prototype — get,list,register</li>
+<li>hexo.extend.console</li>
+</ul>
+<h4 id="Box"><a href="#Box" class="headerlink" title="Box()"></a>Box()</h4><ul>
+<li>EventEmitter.call(this);</li>
+<li>require(‘util’).inherits(Box, EventEmitter);</li>
+</ul>
+<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo()"></a>Hexo()</h4><ul>
+<li>hexo.log.debug/info<h6 id="this"><a href="#this" class="headerlink" title="this"></a>this</h6></li>
+<li>this.source = new Source(this)    继承BOX</li>
+<li>this.theme  | this.locals</li>
+<li>EventEmitter.call(this);</li>
+</ul>
+<h6 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h6><ul>
+<li>require(‘../plugins/console’)(this);这样加载六大插件</li>
+<li>调用load_config,load_plugins，update_package，然后execFilter(‘after_init’,…)  this.extend.filter</li>
+<li>emit(“ready”)<h6 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h6>一切plugins和extend都加载好后</li>
+<li>loadDatabase    hexo.database  .options .load()</li>
+<li>self.source.process(), self.theme.process()</li>
+</ul>
+<h6 id="Hexo-prototype-generate"><a href="#Hexo-prototype-generate" class="headerlink" title="Hexo.prototype._generate()"></a><code>Hexo.prototype._generate()</code></h6><ul>
+<li>emit – generateBefore | generateAfter</li>
+<li>return self.execFilter(‘after_generate’, null, {context: self});</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/20/echarts/" rel="next" title="echarts">
+                <i class="fa fa-chevron-left"></i> echarts
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/20/gitbash/" rel="prev" title="gitbash">
+                gitbash <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">Ben Leie</p>
+            <p class="site-description motion-element" itemprop="description">blog in hexo</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#loadPlugin"><span class="nav-number">1.</span> <span class="nav-text">loadPlugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-generate过程"><span class="nav-number">2.</span> <span class="nav-text">hexo generate过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数们"><span class="nav-number">3.</span> <span class="nav-text">构造函数们</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Console"><span class="nav-number">3.0.1.</span> <span class="nav-text">Console()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Box"><span class="nav-number">3.0.2.</span> <span class="nav-text">Box()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo"><span class="nav-number">3.0.3.</span> <span class="nav-text">Hexo()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#this"><span class="nav-number">3.0.3.0.1.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#init"><span class="nav-number">3.0.3.0.2.</span> <span class="nav-text">init()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#load"><span class="nav-number">3.0.3.0.3.</span> <span class="nav-text">load()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Hexo-prototype-generate"><span class="nav-number">3.0.3.0.4.</span> <span class="nav-text">Hexo.prototype._generate()</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ben Leie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
